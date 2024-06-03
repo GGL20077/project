@@ -1,97 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEVON: Tu asistente virtual</title>
+    <title>DEVON - Asistente Virtual con IA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background: #282c34;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .intro {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .intro h2 {
+            color: #282c34;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .feature {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            flex: 1 1 30%;
+            text-align: center;
+        }
+        .feature img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+        footer {
+            background: #282c34;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
+
+    <header>
+        <h1>DEVON</h1>
+        <p>Un asistente virtual con IA</p>
+    </header>
+
     <div class="container">
-        <h1>DEVON: Tu asistente virtual</h1>
-        <div id="conversation" class="conversation-container"></div>
-        <input type="text" id="user_input" class="user-input" placeholder="Escribe aquí...">
-        <button onclick="sendMessage()" class="send-button">Enviar</button>
+        <div class="intro">
+            <h2>¿Qué es DEVON?</h2>
+            <p>Usando la tecnología de GPT4All y el modelo de lenguaje natural LLM Nous Hermes 2 Mistral 7B, podemos lograr un asistente capaz de resolver dudas algo más avanzadas y poco convencionales. Aunque todavía está en desarrollo y tiene algunos fallos e incongruencias, DEVON ofrece una interfaz agradable y está en constante mejora.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <img src="https://via.placeholder.com/100" alt="Noticias">
+                <h3>Acceder a noticias actuales</h3>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/100" alt="Ubicación">
+                <h3>Tú ubicación actual</h3>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/100" alt="Horóscopo">
+                <h3>Leer el horóscopo</h3>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/100" alt="Spotify">
+                <h3>Abrir Spotify</h3>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/100" alt="Tiempo">
+                <h3>Decir el tiempo actual</h3>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/100" alt="Curiosidades">
+                <h3>Contar datos curiosos</h3>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/100" alt="Trivia">
+                <h3>Jugar al trivia</h3>
+            </div>
+        </div>
+
+        <div class="intro">
+            <h2>Integraciones necesarias</h2>
+            <p>Para hacer funcionar DEVON necesitarás obtener las siguientes APIs:</p>
+            <ul>
+                <li><a href="https://developer.spotify.com/dashboard">Spotify API</a></li>
+                <li><a href="https://newsapi.org/">News API</a></li>
+                <li><a href="https://openweathermap.org/">OpenWeatherMap API</a></li>
+                <li><a href="https://rapidapi.com/">RapidAPI</a></li>
+            </ul>
+            <p>Además, DEVON requiere Vulkan SDK y CUDA para funcionar correctamente.</p>
+        </div>
+
+        <div class="intro">
+            <h2>Próximas mejoras</h2>
+            <ul>
+                <li>Más pronósticos del tiempo</li>
+                <li>Predicciones de broma sobre el futuro</li>
+                <li>Filtros avanzados para noticias</li>
+                <li>Servicios de traducción</li>
+                <li>Definir palabras con más precisión</li>
+            </ul>
+        </div>
     </div>
 
-    <script>
-        document.getElementById("message-form").onsubmit = function(event) {
-            event.preventDefault(); // Evita que se recargue la página
+    <footer>
+        <p>&copy; 2024 DEVON - Todos los derechos reservados</p>
+    </footer>
 
-            var userInput = document.getElementById("user-input").value;
-            if (userInput.trim() !== "") { // Asegúrate de que el campo de entrada no esté vacío
-                send_message(userInput); // Llama a la función send_message() con el valor del campo de entrada
-            }
-        };
-        function sendMessage() {
-            var user_input = document.getElementById("user_input").value;
-            document.getElementById("conversation").innerHTML += "<p><strong>Tú:</strong> " + user_input + "</p>";
-            document.getElementById("user_input").value = "";
-
-            fetch("/send_message", {
-                method: "POST",
-                body: new URLSearchParams({
-                    user_input: user_input
-                }),
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                }
-            })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("conversation").innerHTML += "<p><strong>DEVON:</strong> " + data + "</p>";
-            });
-        }
-    </script>
 </body>
-<style>body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-}
-
-.conversation-container {
-    height: 300px;
-    overflow-y: scroll;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-.user-input {
-    width: calc(100% - 80px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.send-button {
-    width: 80px;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.send-button:hover {
-    background-color: #0056b3;
-}
-</style>
 </html>
