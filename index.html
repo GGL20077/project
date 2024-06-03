@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEVON - Asistente Virtual con IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Nunito', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
@@ -54,42 +55,35 @@
             text-align: center;
             color: white;
             overflow: hidden;
-        }
-        .feature::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
             background-size: cover;
             background-position: center;
-            z-index: -1;
-            opacity: 0.6;
         }
         .feature h3 {
             position: relative;
             z-index: 1;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 5px;
         }
-        .feature[data-bg="noticias"]::before {
+        .feature[data-bg="noticias"] {
             background-image: url('https://img.freepik.com/vector-gratis/fondo-boletin-noticias-tecnologia-global-tierra_1017-33687.jpg');
         }
-        .feature[data-bg="ubicacion"]::before {
+        .feature[data-bg="ubicacion"] {
             background-image: url('https://www.adslzone.net/app/uploads-adslzone.net/2023/05/Ubicacion.jpg');
         }
-        .feature[data-bg="horoscopo"]::before {
+        .feature[data-bg="horoscopo"] {
             background-image: url('https://s3.ppllstatics.com/diariosur/www/multimedia/2024/05/27/Horoscopo-1716797233.jpg');
         }
-        .feature[data-bg="spotify"]::before {
+        .feature[data-bg="spotify"] {
             background-image: url('https://s1.elespanol.com/2023/06/20/actualidad/772933347_234102709_1706x960.jpg');
         }
-        .feature[data-bg="tiempo"]::before {
+        .feature[data-bg="tiempo"] {
             background-image: url('https://media.istockphoto.com/id/477110708/es/foto/pron%C3%B3stico-del-tiempo.jpg?s=612x612&w=0&k=20&c=gmLDDjJh4hubzIAcZdgBq6Xs7awU-ue3OVXeEuJlQWE=');
         }
-        .feature[data-bg="curiosidades"]::before {
+        .feature[data-bg="curiosidades"] {
             background-image: url('https://www.profesionalonline.com/blog/wp-content/uploads/2022/03/los-5-tipos-de-curiosidad-y-como-aprovecharlos-header.jpg');
         }
-        .feature[data-bg="trivia"]::before {
+        .feature[data-bg="trivia"] {
             background-image: url('https://www.lecturas.com/medio/2024/01/05/300-preguntas-para-conocer-a-alguien-en-profundidad_b7ee5f01_240105134330_1280x720.jpg');
         }
         footer {
@@ -106,8 +100,6 @@
 <body>
 
     <header>
-    <br>
-    <br>
         <h1>DEVON</h1>
         <p>Un asistente virtual con IA</p>
     </header>
@@ -165,10 +157,6 @@
             </ul>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
     <br>
     <br>
     <br>
